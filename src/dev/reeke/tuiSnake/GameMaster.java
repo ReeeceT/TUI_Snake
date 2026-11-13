@@ -10,15 +10,10 @@ public class GameMaster {
     /**
      * This class is designed to handle game states, user input, and updating each frame.
      * 
-     * @param SCREEN_HEIGHT - The height of the TUI game window
-     * @param SCREEN_WIDTH - The width of the TUI game window
      * @param UPDATE_SPEED - The amount of updates sent within one second.
      */
-    public GameMaster(final int SCREEN_HEIGHT, final int SCREEN_WIDTH, final int UPDATE_SPEED) {
-        new GameScreen(SCREEN_WIDTH, SCREEN_HEIGHT);
+    public GameMaster(int UPDATE_SPEED) {
         this.UPDATE_SPEED = UPDATE_SPEED;
-
-        currentState = 
     }
 
     /**

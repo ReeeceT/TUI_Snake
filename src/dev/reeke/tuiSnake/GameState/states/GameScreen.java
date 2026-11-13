@@ -4,12 +4,24 @@ import dev.reeke.tuiSnake.GameState.GameState;
 
 public class GameScreen implements GameState {
     private static GameScreen gameState = new GameScreen();
-    private char[] screen; // 1D array representing the primary game screen.
 
-    @Override
+    @Override 
+    public void initState() {
+        for (int i = 0; i < screen.length(); i++) {
+
+        }
+    }
+
+    @Override 
+    public void drawState() {
+        
+    }
+
     public GameScreen getState() {
         return gameState;
     }
 
-    private GameScreen() {};
+    private GameScreen() {
+        initState();
+    };
 }

@@ -5,10 +5,17 @@ import dev.reeke.tuiSnake.GameState.GameState;
 public class SettingsScreen implements GameState  {
     private static SettingsScreen gameState = new SettingsScreen();
 
-    @Override
-    public SettingsScreen getState() {
+
+
+
+
+
+
+    public GameState getState() {
         return gameState;
     }
 
-    private SettingsScreen() {};
+    private SettingsScreen() {
+        initState();
+    };
 }

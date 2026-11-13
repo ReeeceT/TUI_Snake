@@ -1,14 +1,14 @@
 package dev.reeke.tuiSnake.GameState;
 
+import dev.reeke.tuiSnake.TUIScreen;
+
 public interface GameState {
-    public final int SCREEN_HEIGHT = 8;
-    public final int SCREEN_WIDTH = 8;
+    final int SCREEN_HEIGHT = 16;
+    final int SCREEN_WIDTH = 16;
 
-    /**
-     * 
-     * @return - The reference to this state
-     */
-    public GameState getState();
+    TUIScreen screen = new TUIScreen(SCREEN_HEIGHT * SCREEN_WIDTH);
 
+    public void initState();
+    public void drawState();
 
 }

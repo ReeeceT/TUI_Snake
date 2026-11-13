@@ -21,6 +21,8 @@ public class GameMaster {
     public GameMaster() {
         this.UPDATE_SPEED = Constants.UPDATE_SPEED;
         running = true;
+
+        TUIScreen.getInstance(); // Have to do this to make the constructor run, this is because static constructors are "lazy-loaded", and only run if the class gets referenced
         
         while (running) {
             // nextFrame(); // Just once

@@ -1,7 +1,5 @@
 package dev.reeke.tuiSnake;
 
-import dev.reeke.tuiSnake.Constants;
-
 /**
  * Wrapper class for managing the screen
  * 
@@ -14,7 +12,6 @@ public class TUIScreen {
     private static final TUIScreen TUIScreen = new TUIScreen(Constants.SCREEN_HEIGHT, Constants.SCREEN_WIDTH);
     private final char[] screen;
     
-
     private TUIScreen(final int SCREEN_HEIGHT, final int SCREEN_WIDTH) {
         this.SCREEN_HEIGHT = SCREEN_HEIGHT;
         this.SCREEN_WIDTH = SCREEN_WIDTH;

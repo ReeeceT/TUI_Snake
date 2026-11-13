@@ -4,7 +4,7 @@ import dev.reeke.tuiSnake.TUIScreen;
 import dev.reeke.tuiSnake.Constants;
 
 public interface GameState {
-    TUIScreen screen = new TUIScreen(Constants.SCREEN_HEIGHT, Constants.SCREEN_WIDTH);
+    TUIScreen screen = TUIScreen.getInstance();
 
     public void initState();
     public void drawState();

@@ -18,7 +18,7 @@ public class MenuScreen implements GameState  {
 
 
 
-    public static MenuScreen getState() {
+    public static MenuScreen getInstance() {
         return gameState;
     }
 

@@ -20,7 +20,7 @@ public class SettingsScreen implements GameState  {
 
 
 
-    public static GameState getState() {
+    public static GameState getInstance() {
         return gameState;
     }
 

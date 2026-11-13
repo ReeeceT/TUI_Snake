@@ -21,12 +21,10 @@ public class GameScreen implements GameState {
             for (int col = 0; col < screen.getWidth(); col++) {
                 System.out.print(screen.getCharacter(row, col));
             }
-
-            System.out.print("\n");
         }
     }
 
-    public static GameScreen getState() {
+    public static GameScreen getInstance() {
         return gameState;
     }
 

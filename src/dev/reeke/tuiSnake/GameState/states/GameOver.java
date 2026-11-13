@@ -13,12 +13,12 @@ public class GameOver implements GameState  {
 
     @Override 
     public void drawState() {
-        
+
     }
 
 
 
-    public static GameOver getState() {
+    public static GameOver getInstance() {
         return gameState;
     }
 

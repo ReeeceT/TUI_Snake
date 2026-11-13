@@ -23,7 +23,8 @@ public class GameMaster {
         running = true;
         
         while (running) {
-            nextFrame(); // Just once
+            // nextFrame(); // Just once
+            end();
         }
     }
 
@@ -37,7 +38,7 @@ public class GameMaster {
             System.out.println(e.getMessage());
         }
 
-        GameScreen.getState().drawState();
+        GameScreen.getInstance().drawState();
         end();
     }
 

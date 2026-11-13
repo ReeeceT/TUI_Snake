@@ -8,18 +8,18 @@ public class GameScreen implements GameState {
 
     @Override 
     public void initState() {
-        for (int i = 0; i < screen.getWidth(); i++) {
-            for (int j = 0; j < screen.getHeight(); j++) {
-                screen.drawCharacter(j, i, 'O');
+        for (int row = 0; row < screen.getHeight(); row++) {
+            for (int col = 0; col < screen.getWidth(); col++) {
+                screen.drawCharacter(row, col, 'O');
             }
         }
     }
 
     @Override 
     public void drawState() {
-        for (int i = 0; i < screen.getWidth(); i++) {
-            for (int j = 0; j < screen.getHeight(); j++) {
-                System.out.print(screen.getCharacter(j, i));
+        for (int row = 0; row < screen.getHeight(); row++) {
+            for (int col = 0; col < screen.getWidth(); col++) {
+                System.out.print(screen.getCharacter(row, col));
             }
 
             System.out.print("\n");

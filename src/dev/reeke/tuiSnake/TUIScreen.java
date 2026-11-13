@@ -7,16 +7,14 @@ package dev.reeke.tuiSnake;
 public class TUIScreen {
     private final int SCREEN_HEIGHT;
     private final int SCREEN_WIDTH;
-    private final int X_PADDING;
 
     private final char[] screen;
 
     public TUIScreen(final int SCREEN_HEIGHT, final int SCREEN_WIDTH) {
         this.SCREEN_HEIGHT = SCREEN_HEIGHT;
         this.SCREEN_WIDTH = SCREEN_WIDTH;
-        X_PADDING = 5;
 
-        screen = new char[SCREEN_HEIGHT * (SCREEN_WIDTH)];
+        screen = new char[SCREEN_HEIGHT * SCREEN_WIDTH];
     }
 
     public int cellCount() {
@@ -27,16 +25,16 @@ public class TUIScreen {
      * 
      * X and Y are zero-indexed, meaning that the top-left pixel will be located at (0, 0) rather than (1, 1)
      * 
-     * @param x - The x coordinate of the pixel to draw to. 
-     * @param y - The y coordinate of the pixel to draw to.
+     * @param row - The x coordinate of the pixel to draw to. 
+     * @param col - The y coordinate of the pixel to draw to.
      * @param c - The character to draw to that position.
      */
-    public void drawCharacter(int x, int y, char c) {
-        screen[(y * SCREEN_WIDTH) + x] = c;
+    public void drawCharacter(int row, int col, char c) {
+        screen[(row * SCREEN_WIDTH) + col] = c;
     }
 
-    public char getCharacter(int x, int y) {
-        return screen[(y * SCREEN_WIDTH) + x];
+    public char getCharacter(int row, int col) {
+        return screen[(row * SCREEN_WIDTH) + col];
     }
 
     public int getHeight() {

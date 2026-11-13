@@ -4,6 +4,6 @@ import dev.reeke.tuiSnake.GameMaster;
 
 public class Main {
     public static void main(String[] args) {
-        new GameMaster(8, 8, 30);
+        new GameMaster();
     }
 }

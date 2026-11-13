@@ -7,17 +7,19 @@ package dev.reeke.tuiSnake;
 public class TUIScreen {
     private final int SCREEN_HEIGHT;
     private final int SCREEN_WIDTH;
+    private final int X_PADDING;
 
     private final char[] screen;
 
     public TUIScreen(final int SCREEN_HEIGHT, final int SCREEN_WIDTH) {
         this.SCREEN_HEIGHT = SCREEN_HEIGHT;
         this.SCREEN_WIDTH = SCREEN_WIDTH;
+        X_PADDING = 5;
 
-        screen = new char[SCREEN_HEIGHT * SCREEN_WIDTH];
+        screen = new char[SCREEN_HEIGHT * (SCREEN_WIDTH)];
     }
 
-    public int pixelCount() {
+    public int cellCount() {
         return screen.length;
     }
 
@@ -31,6 +33,10 @@ public class TUIScreen {
      */
     public void drawCharacter(int x, int y, char c) {
         screen[(y * SCREEN_WIDTH) + x] = c;
+    }
+
+    public char getCharacter(int x, int y) {
+        return screen[(y * SCREEN_WIDTH) + x];
     }
 
     public int getHeight() {

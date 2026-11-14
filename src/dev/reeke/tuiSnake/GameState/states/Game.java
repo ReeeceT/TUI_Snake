@@ -3,8 +3,8 @@ package dev.reeke.tuiSnake.GameState.states;
 import dev.reeke.tuiSnake.GameState.GameState;
 import dev.reeke.tuiSnake.TUIScreen;
 
-public class GameScreen implements GameState {
-    private static GameScreen gameState = new GameScreen();
+public class Game implements GameState {
+    private static Game gameState = new Game();
 
     @Override 
     public void initState() {
@@ -24,11 +24,11 @@ public class GameScreen implements GameState {
         }
     }
 
-    public static GameScreen getInstance() {
+    public static Game getInstance() {
         return gameState;
     }
 
-    private GameScreen() {
+    private Game() {
         initState();
     };
 }

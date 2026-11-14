@@ -2,9 +2,9 @@ package dev.reeke.tuiSnake;
 
 import dev.reeke.tuiSnake.GameState.GameState;
 import dev.reeke.tuiSnake.GameState.states.GameOver;
-import dev.reeke.tuiSnake.GameState.states.GameScreen;
-import dev.reeke.tuiSnake.GameState.states.MenuScreen;
-import dev.reeke.tuiSnake.GameState.states.SettingsScreen;
+import dev.reeke.tuiSnake.GameState.states.Game;
+import dev.reeke.tuiSnake.GameState.states.Menu;
+import dev.reeke.tuiSnake.GameState.states.Settings;
 
 import java.lang.Thread;
 
@@ -40,7 +40,7 @@ public class GameMaster {
             System.out.println(e.getMessage());
         }
 
-        GameScreen.getInstance().drawState();
+        Game.getInstance().drawState();
         end();
     }
 

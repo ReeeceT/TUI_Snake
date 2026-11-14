@@ -1,6 +1,7 @@
 package dev.reeke.tuiSnake.screen;
 
 import dev.reeke.tuiSnake.Constants;
+import java.lang.Thread;
 
 /**
  * Wrapper class for managing the screen
@@ -8,37 +9,50 @@ import dev.reeke.tuiSnake.Constants;
  */
 public class TUIScreen {
     private final int SCREEN_HEIGHT;
-    private final int SCREEN_WIDTH;
-    private final int TRUE_SCREEN_WIDTH;
+    private final int MAX_HEIGHT_INDEX;
 
-    private static final TUIScreen TUIScreen = new TUIScreen(Constants.SCREEN_HEIGHT, Constants.SCREEN_WIDTH);
+    private final int SCREEN_WIDTH;
+    private final int MAX_WIDTH_INDEX;
+
+    private final int NEW_LINE_COL;
+    private boolean DO_COL_ERR;
+
     private final char[] screen;
+    private static final TUIScreen TUIScreen = new TUIScreen(Constants.SCREEN_HEIGHT, Constants.SCREEN_WIDTH);
     
     private TUIScreen(final int SCREEN_HEIGHT, final int SCREEN_WIDTH) {
         this.SCREEN_HEIGHT = SCREEN_HEIGHT;
-        this.SCREEN_WIDTH = SCREEN_WIDTH;
-        TRUE_SCREEN_WIDTH = SCREEN_WIDTH + 1; // for '\n' at the end of each row
+        this.MAX_HEIGHT_INDEX = SCREEN_HEIGHT - 1;
 
-        screen = new char[SCREEN_HEIGHT * TRUE_SCREEN_WIDTH];
+        this.SCREEN_WIDTH = SCREEN_WIDTH;
+        this.MAX_WIDTH_INDEX = SCREEN_WIDTH - 1;
+
+        NEW_LINE_COL = 1;
+        DO_COL_ERR = false;
+        screen = new char[SCREEN_HEIGHT * (SCREEN_WIDTH + NEW_LINE_COL)];
+
         initScreen();
     }
 
     private void initScreen() {
-        System.out.println("init screen");
+        System.out.println("init screen\n");
 
-        for (int row = 0; row < SCREEN_HEIGHT; row++) {
-            
-            for (int col = 0; col < TRUE_SCREEN_WIDTH; col++) {
-                
-                if (col == TRUE_SCREEN_WIDTH) {
-                    screen[(row * TRUE_SCREEN_WIDTH) + col] = 't';
-                    System.out.println("gur");
+        for (int row = 0; row <= MAX_HEIGHT_INDEX; row++) {
+            for (int col = 0; col <= MAX_WIDTH_INDEX; col++) {
+                if (col == MAX_WIDTH_INDEX) {
+                    screen[getIndex(row, col)] = 'O';
+                    screen[getIndex(row, col) + NEW_LINE_COL] = '\n';
+                } else {
+                    screen[getIndex(row, col)] = 'O';
                 }
             }
         }
 
         System.out.println(String.valueOf(screen));
+        DO_COL_ERR = true;
     }
+
+    
 
     /**
      * 
@@ -49,20 +63,50 @@ public class TUIScreen {
      * @param c - The character to draw to that position.
      */
     public void drawCharacter(int row, int col, char c) {
-        if (row >= SCREEN_HEIGHT) {
-            System.out.println("Invalid row: " + row);
-            return;
+        if (col > MAX_WIDTH_INDEX) {
+            System.out.println("Invalid column   " + col);
         }
-        if (col >= SCREEN_WIDTH) {
-            System.out.println("Invalid column: " + col);
-            return;
+        if (row > MAX_HEIGHT_INDEX) {
+            System.out.println("Invalid row      " + row);
         }
-
-        screen[(row * SCREEN_WIDTH) + col] = c;
+        
+        screen[getIndex(row, col)] = c;
     }
 
+    /**
+     * 
+     * @param row - Select row, with 0 being the first row.
+     * @param col - Select column, with 0 being the first column,
+     * @return - The character at the specified row and column.
+     */
     public char getCharacter(int row, int col) {
-        return screen[(row * SCREEN_WIDTH) + col];
+        if (col > MAX_WIDTH_INDEX) {
+            System.out.println("Invalid column   " + col);
+        }
+        if (row > MAX_HEIGHT_INDEX) {
+            System.out.println("Invalid row      " + row);
+        }
+
+        return screen[getIndex(row, col)];
+    }
+
+    /**
+     * 
+     * @param row - Select row, with 0 being the first row.
+     * @param col - Select column, with 0 being the first column.
+     * @return - The index of the screen array based on the specified row and column.
+     */
+    public int getIndex(int row, int col) {
+        int trueWidth = SCREEN_WIDTH + NEW_LINE_COL;
+
+        if (col > MAX_WIDTH_INDEX && DO_COL_ERR) {
+            System.out.println("Invalid column   " + col);
+        }
+        if (row > MAX_HEIGHT_INDEX) {
+            System.out.println("Invalid row      " + row);
+        }
+
+        return (row * trueWidth) + col;
     }
 
     public int getHeight() {
@@ -73,6 +117,10 @@ public class TUIScreen {
         return SCREEN_WIDTH;
     }
 
+    /**
+     * 
+     * @return The length of the screen array, aka the amount of character cells.
+     */
     public int cellCount() {
         return screen.length;
     }

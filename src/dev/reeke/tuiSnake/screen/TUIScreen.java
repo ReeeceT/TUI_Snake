@@ -1,6 +1,7 @@
 package dev.reeke.tuiSnake.screen;
 
 import dev.reeke.tuiSnake.Constants;
+import java.lang.StringBuilder;
 import java.lang.Thread;
 
 /**
@@ -15,7 +16,10 @@ public class TUIScreen {
     private final int MAX_WIDTH_INDEX;
 
     private final int NEW_LINE_COL;
-    private boolean DO_COL_ERR;
+    private boolean doInvalidColumn;
+
+    private int H_PADDING;
+    private StringBuilder sb_H;
 
     private final char[] screen;
     private static final TUIScreen TUIScreen = new TUIScreen(Constants.SCREEN_HEIGHT, Constants.SCREEN_WIDTH);
@@ -27,32 +31,31 @@ public class TUIScreen {
         this.SCREEN_WIDTH = SCREEN_WIDTH;
         this.MAX_WIDTH_INDEX = SCREEN_WIDTH - 1;
 
+        H_PADDING = Constants.HORIZONTAL_PADDING;
+        sb_H = new StringBuilder();
+        sb_H.setLength(H_PADDING);
+        
         NEW_LINE_COL = 1;
-        DO_COL_ERR = false;
+        doInvalidColumn = false;
         screen = new char[SCREEN_HEIGHT * (SCREEN_WIDTH + NEW_LINE_COL)];
 
         initScreen();
     }
 
     private void initScreen() {
-        System.out.println("init screen\n");
-
         for (int row = 0; row <= MAX_HEIGHT_INDEX; row++) {
             for (int col = 0; col <= MAX_WIDTH_INDEX; col++) {
                 if (col == MAX_WIDTH_INDEX) {
-                    screen[getIndex(row, col)] = 'O';
+                    screen[getIndex(row, col)] = '~';
                     screen[getIndex(row, col) + NEW_LINE_COL] = '\n';
                 } else {
-                    screen[getIndex(row, col)] = 'O';
+                    screen[getIndex(row, col)] = '~';
                 }
             }
         }
 
-        System.out.println(String.valueOf(screen));
-        DO_COL_ERR = true;
+        doInvalidColumn = true;
     }
-
-    
 
     /**
      * 
@@ -71,6 +74,20 @@ public class TUIScreen {
         }
         
         screen[getIndex(row, col)] = c;
+    }
+
+    public void drawScreen() {
+        doInvalidColumn = false;
+        for (int i = 0; i <= H_PADDING; i++) sb_H.append(" ");
+
+        for (int row = 0; row <= MAX_HEIGHT_INDEX; row++) {
+            for (int col = 0; col <= MAX_WIDTH_INDEX + NEW_LINE_COL; col++) {
+                System.out.print(sb_H.toString());
+                System.out.print(screen[getIndex(row, col)]);
+            }
+        }
+
+        doInvalidColumn = true;
     }
 
     /**
@@ -99,7 +116,7 @@ public class TUIScreen {
     public int getIndex(int row, int col) {
         int trueWidth = SCREEN_WIDTH + NEW_LINE_COL;
 
-        if (col > MAX_WIDTH_INDEX && DO_COL_ERR) {
+        if (col > MAX_WIDTH_INDEX && doInvalidColumn) {
             System.out.println("Invalid column   " + col);
         }
         if (row > MAX_HEIGHT_INDEX) {

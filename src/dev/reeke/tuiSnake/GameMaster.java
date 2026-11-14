@@ -21,10 +21,10 @@ public class GameMaster {
     public GameMaster() {
         isGameRunning = true;
 
-        TUIScreen.getInstance(); // Have to do this to make the constructor run, this is because static constructors are "lazy-loaded", and only run if the class gets referenced
+        //TUIScreen.getInstance(); // Have to do this to make the constructor run, this is because static constructors are "lazy-loaded", and only run if the class gets referenced
         
         while (isGameRunning) {
-            // nextFrame(); // Just once
+            nextFrame(); // Just once
             end();
         }
     }

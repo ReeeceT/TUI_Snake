@@ -18,8 +18,7 @@ public class TUIScreen {
     private final int NEW_LINE_COL;
     private boolean doInvalidColumn;
 
-    private int H_PADDING;
-    private StringBuilder sb_H;
+    private StringBuilder H_PADDING;
 
     private final char[] screen;
     private static final TUIScreen TUIScreen = new TUIScreen(Constants.SCREEN_HEIGHT, Constants.SCREEN_WIDTH);
@@ -31,10 +30,10 @@ public class TUIScreen {
         this.SCREEN_WIDTH = SCREEN_WIDTH;
         this.MAX_WIDTH_INDEX = SCREEN_WIDTH - 1;
 
-        H_PADDING = Constants.HORIZONTAL_PADDING;
-        sb_H = new StringBuilder();
-        sb_H.setLength(H_PADDING);
-        
+        H_PADDING = new StringBuilder();
+        H_PADDING.setLength(Constants.HORIZONTAL_PADDING);
+        for (int i = 0; i <= Constants.HORIZONTAL_PADDING; i++) H_PADDING.append(" ");
+
         NEW_LINE_COL = 1;
         doInvalidColumn = false;
         screen = new char[SCREEN_HEIGHT * (SCREEN_WIDTH + NEW_LINE_COL)];
@@ -78,11 +77,10 @@ public class TUIScreen {
 
     public void drawScreen() {
         doInvalidColumn = false;
-        for (int i = 0; i <= H_PADDING; i++) sb_H.append(" ");
-
+        
         for (int row = 0; row <= MAX_HEIGHT_INDEX; row++) {
             for (int col = 0; col <= MAX_WIDTH_INDEX + NEW_LINE_COL; col++) {
-                System.out.print(sb_H.toString());
+                System.out.print(H_PADDING.toString());
                 System.out.print(screen[getIndex(row, col)]);
             }
         }

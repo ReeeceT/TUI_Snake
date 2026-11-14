@@ -1,4 +1,6 @@
-package dev.reeke.tuiSnake;
+package dev.reeke.tuiSnake.screen;
+
+import dev.reeke.tuiSnake.Constants;
 
 /**
  * Wrapper class for managing the screen
@@ -21,8 +23,21 @@ public class TUIScreen {
         initScreen();
     }
 
-    public int cellCount() {
-        return screen.length;
+    private void initScreen() {
+        System.out.println("init screen");
+
+        for (int row = 0; row < SCREEN_HEIGHT; row++) {
+            
+            for (int col = 0; col < TRUE_SCREEN_WIDTH; col++) {
+                
+                if (col == TRUE_SCREEN_WIDTH) {
+                    screen[(row * TRUE_SCREEN_WIDTH) + col] = 't';
+                    System.out.println("gur");
+                }
+            }
+        }
+
+        System.out.println(String.valueOf(screen));
     }
 
     /**
@@ -58,24 +73,12 @@ public class TUIScreen {
         return SCREEN_WIDTH;
     }
 
+    public int cellCount() {
+        return screen.length;
+    }
+
     public static TUIScreen getInstance() {
         return TUIScreen;
     }
-
-    private void initScreen() {
-        System.out.println("init screen");
-
-        for (int row = 0; row < SCREEN_HEIGHT; row++) {
-            
-            for (int col = 0; col < TRUE_SCREEN_WIDTH; col++) {
-                
-                if (col == TRUE_SCREEN_WIDTH) {
-                    screen[(row * TRUE_SCREEN_WIDTH) + col] = 't';
-                    System.out.println("gur");
-                }
-            }
-        }
-
-        System.out.println(String.valueOf(screen));
-    }
+    
 }

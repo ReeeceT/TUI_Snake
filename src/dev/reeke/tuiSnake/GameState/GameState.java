@@ -1,7 +1,7 @@
-package dev.reeke.tuiSnake.GameState;
+package dev.reeke.tuiSnake.gameState;
 
-import dev.reeke.tuiSnake.TUIScreen;
 import dev.reeke.tuiSnake.Constants;
+import dev.reeke.tuiSnake.screen.TUIScreen;
 
 public interface GameState {
     TUIScreen screen = TUIScreen.getInstance();

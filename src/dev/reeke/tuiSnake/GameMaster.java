@@ -1,10 +1,11 @@
 package dev.reeke.tuiSnake;
 
-import dev.reeke.tuiSnake.GameState.GameState;
-import dev.reeke.tuiSnake.GameState.states.GameOver;
-import dev.reeke.tuiSnake.GameState.states.Game;
-import dev.reeke.tuiSnake.GameState.states.Menu;
-import dev.reeke.tuiSnake.GameState.states.Settings;
+import dev.reeke.tuiSnake.gameState.GameState;
+import dev.reeke.tuiSnake.gameState.states.Game;
+import dev.reeke.tuiSnake.gameState.states.GameOver;
+import dev.reeke.tuiSnake.gameState.states.Menu;
+import dev.reeke.tuiSnake.gameState.states.Settings;
+import dev.reeke.tuiSnake.screen.TUIScreen;
 
 import java.lang.Thread;
 

@@ -1,7 +1,7 @@
-package dev.reeke.tuiSnake.GameState.states;
+package dev.reeke.tuiSnake.gameState.states;
 
-import dev.reeke.tuiSnake.GameState.GameState;
-import dev.reeke.tuiSnake.TUIScreen;
+import dev.reeke.tuiSnake.gameState.GameState;
+import dev.reeke.tuiSnake.screen.TUIScreen;
 
 public class Game implements GameState {
     private static Game gameState = new Game();

@@ -4,7 +4,7 @@ import dev.reeke.tuiSnake.gameState.GameState;
 import dev.reeke.tuiSnake.screen.TUIScreen;
 
 public class Menu implements GameState  {
-    private static Menu gameState = new Menu();
+    private static Menu menu = new Menu();
 
     @Override
     public void initState() {
@@ -19,7 +19,7 @@ public class Menu implements GameState  {
 
 
     public static Menu getInstance() {
-        return gameState;
+        return menu;
     }
 
     private Menu() {

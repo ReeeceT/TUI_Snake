@@ -4,7 +4,7 @@ import dev.reeke.tuiSnake.gameState.GameState;
 import dev.reeke.tuiSnake.screen.TUIScreen;
 
 public class GameOver implements GameState  {
-    private static GameOver gameState = new GameOver();
+    private static GameOver gameOver = new GameOver();
 
     @Override
     public void initState() {
@@ -19,7 +19,7 @@ public class GameOver implements GameState  {
 
 
     public static GameOver getInstance() {
-        return gameState;
+        return gameOver;
     }
 
     private GameOver() {

@@ -4,7 +4,7 @@ import dev.reeke.tuiSnake.gameState.GameState;
 import dev.reeke.tuiSnake.screen.TUIScreen;
 
 public class Settings implements GameState  {
-    private static Settings gameState = new Settings();
+    private static Settings settings = new Settings();
 
     @Override
     public void initState() {
@@ -21,7 +21,7 @@ public class Settings implements GameState  {
 
 
     public static GameState getInstance() {
-        return gameState;
+        return settings;
     }
 
     private Settings() {
